@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Silly & Wild Mad-Libs!</title>
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Comic Neue', cursive;
+    margin: 20px;
+    line-height: 1.6;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    color: #333;
+  }
+  h1 {
+    color: #ff4500;
+    text-align: center;
+    text-shadow: 1px 1px #fff;
+  }
+  label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 2px solid #ff8c00;
+    border-radius: 5px;
+  }
+  button {
+    padding: 12px 25px;
+    font-size: 16px;
+    margin-top: 10px;
+    background-color: #ff4500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
+  button:hover {
+    background-color: #e63e00;
+  }
+  #result {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #fff4e6;
+    border-radius: 12px;
+    border: 2px dashed #ff8c00;
+    white-space: pre-wrap;
+    font-size: 1.1em;
+  }
+  .container {
+    max-width: 700px;
+    margin: auto;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>The Silly & Wild College Mad-Libs!</h1>
+
+<form id="madLibsForm">
+  <label for="name">Name:</label><input type="text" id="name" required>
+  <label for="nickname">Silly Nickname:</label><input type="text" id="nickname" required>
+  <label for="place">City/Fantasy Place:</label><input type="text" id="place" required>
+  <label for="pluralNoun">Plural Noun:</label><input type="text" id="pluralNoun" required>
+  <label for="funnyAction">Funny Animal Action:</label><input type="text" id="funnyAction" required>
+  <label for="year">Year in College:</label><input type="text" id="year" required>
+  <label for="major">Major:</label><input type="text" id="major" required>
+  <label for="dreamJob">Ridiculous Dream Job/Creature:</label><input type="text" id="dreamJob" required>
+  <label for="dreamAction">Funny Thing You’d Do in That Job:</label><input type="text" id="dreamAction" required>
+  <label for="iceCream">Crazy Ice Cream Flavor:</label><input type="text" id="iceCream" required>
+  <label for="iceTaste">What It Tastes Like:</label><input type="text" id="iceTaste" required>
+  <label for="danceMove">Go-to Dance Move:</label><input type="text" id="danceMove" required>
+  <label for="makesPluralVerb">What it makes plural noun do (verb):</label><input type="text" id="makesPluralVerb" required>
+  <label for="funFactAction">Weird/Embarrassing Action:</label><input type="text" id="funFactAction" required>
+  <label for="funFactClothing">Ridiculous Clothing Item:</label><input type="text" id="funFactClothing" required>
+  <label for="funFactReason">Funny Reason Nobody Noticed:</label><input type="text" id="funFactReason" required>
+  <label for="mythicalCreature">Mythical Creature:</label><input type="text" id="mythicalCreature" required>
+  <label for="mythicalAction">Silly Superpower/Action:</label><input type="text" id="mythicalAction" required>
+  <label for="soundtrack">Soundtrack of Life (Song/Sound):</label><input type="text" id="soundtrack" required>
+  <label for="themeSong">Theme Song Entering Room:</label><input type="text" id="themeSong" required>
+  <label for="uselessSkill">Ridiculous Skill to Master:</label><input type="text" id="uselessSkill" required>
+  <label for="uselessOutcome">Hilarious Outcome of Skill:</label><input type="text" id="uselessOutcome" required>
+  <label for="freeTime1">Free Time Activity:</label><input type="text" id="freeTime1" required>
+  <label for="freeTime2">Even Sillier Free Time Activity:</label><input type="text" id="freeTime2" required>
+  <label for="snack1">Ultimate Snack Combo - Food 1:</label><input type="text" id="snack1" required>
+  <label for="snack2">Ultimate Snack Combo - Food 2:</label><input type="text" id="snack2" required>
+  <label for="snackSide">Unexpected Side:</label><input type="text" id="snackSide" required>
+  <label for="fightItem">Animal/Object to Fight For Last Bite:</label><input type="text" id="fightItem" required>
+  <label for="celebrity">Celebrity/Character to Bring on Adventure:</label><input type="text" id="celebrity" required>
+  <label for="celebritySkill">Ridiculous Skill/Trait of Celebrity:</label><input type="text" id="celebritySkill" required>
+  <label for="motto">Life Motto / Funny Quote:</label><input type="text" id="motto" required>
+
+  <button type="button" onclick="generateMadLib()">Generate My Introduction</button>
+</form>
+
+<div id="result"></div>
+</div>
+
+<script>
+function generateMadLib() {
+  const values = {};
+  const fields = ["name","nickname","place","pluralNoun","funnyAction","year","major","dreamJob","dreamAction","iceCream","iceTaste","danceMove","makesPluralVerb","funFactAction","funFactClothing","funFactReason","mythicalCreature","mythicalAction","soundtrack","themeSong","uselessSkill","uselessOutcome","freeTime1","freeTime2","snack1","snack2","snackSide","fightItem","celebrity","celebritySkill","motto"];
+  fields.forEach(f => values[f] = document.getElementById(f).value);
+
+  const madLib = `
+Hello, Earthlings! My name is ${values.name}, but my alien friends call me ${values.nickname}.
+I come from the faraway land of ${values.place}, where the ${values.pluralNoun} roam freely and ${values.funnyAction} is considered a national sport.
+I am currently ${values.year}, majoring in ${values.major}, but my secret dream is to become a ${values.dreamJob}, because then I could ${values.dreamAction}.
+If I were a flavor of ice cream, I would be ${values.iceCream}, and I would taste like ${values.iceTaste}.
+My go-to dance move is the ${values.danceMove}, and it always makes ${values.pluralNoun} ${values.makesPluralVerb} uncontrollably.
+A fun fact about me that might blow your mind is that I once ${values.funFactAction}, while wearing ${values.funFactClothing}, and nobody noticed because ${values.funFactReason}.
+If I were a mythical creature, I would be a ${values.mythicalCreature}, but only if I could ${values.mythicalAction}.
+The soundtrack of my life would be ${values.soundtrack}, and my theme song when entering a room dramatically is ${values.themeSong}.
+If I could instantly become an expert in something useless but amazing, it would be ${values.uselessSkill}, because then I could ${values.uselessOutcome}.
+In my free time, I like to ${values.freeTime1}, or sometimes I ${values.freeTime2} just for the thrill of it.
+My ultimate snack combo is ${values.snack1} with ${values.snack2} and a side of ${values.snackSide}, and I would fight ${values.fightItem} for the last bite without hesitation.
+If I could bring one fictional or real-life celebrity along on an epic adventure, it would be ${values.celebrity}, because they are amazing at ${values.celebritySkill}.
+Finally, my life motto (guaranteed to confuse everyone) is: ${values.motto}.
+  `;
+
+  document.getElementById("result").textContent = madLib;
+}
+</script>
+
+</body>
+</html>
